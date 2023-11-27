@@ -1,0 +1,26 @@
+CREATE DATABASE expense_manager
+USE expense_manager;
+CREATE TABLE expenseslist (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(255),
+    date DATE,
+    amount DECIMAL(10)
+);
+INSERT INTO expenseslist (category, date, amount) VALUES
+('Market', '2023-11-26', 50000),
+('Shopping', '2023-11-25', 250000),
+('Milk tea', '2023-11-24', 25000);
+
+ALTER TABLE expenseslist
+ADD COLUMN category_id INT,
+ADD FOREIGN KEY (category_id) REFERENCES categories(id);
+
+INSERT INTO categories (name) VALUES
+    ('Shopping'),
+    ('Milk tea'),
+    ('Book'),
+    ('Gasoline'),
+    ('Skincare');
+
+ALTER TABLE expenseslist
+ADD COLUMN note LONGTEXT NULL;
